@@ -1,0 +1,33 @@
+{
+  "name": "gitkit",
+  "version": "0.1.0",
+  "description": "simple git kits",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sartrey/node-gitkit.git"
+  },
+  "keywords": [
+    "git"
+  ],
+  "author": "Sartrey Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sartrey/node-gitkit/issues"
+  },
+  "homepage": "https://github.com/sartrey/node-gitkit#readme",
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.2"
+  }
+}
