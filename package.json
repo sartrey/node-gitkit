@@ -1,13 +1,11 @@
 {
-  "name": "gitkit",
-  "version": "0.1.0",
+  "name": "node-gitkit",
+  "version": "0.1.2",
   "description": "simple git kits",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "test"
+    "lint": "eslint .",
+    "test": "eslint . && istanbul cover _mocha -- test"
   },
   "repository": {
     "type": "git",
@@ -22,9 +20,7 @@
     "url": "https://github.com/sartrey/node-gitkit/issues"
   },
   "homepage": "https://github.com/sartrey/node-gitkit#readme",
-  "dependencies": {
-    "mkdirp": "^0.5.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^3.9.1",
     "istanbul": "^0.4.5",
