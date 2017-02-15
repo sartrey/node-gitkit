@@ -112,7 +112,8 @@ describe('simple: local', function () {
   })
 
   it('get blob content', function () {
-    return gitkit.getBlobContent(TEST_WORK, 'b54b2e555c82b31c4b')
+    // todo: test binary
+    return gitkit.getBlobContent(TEST_WORK, 'b54b2e555c82b31c4b', 'utf8')
     .then(v => assert.equal(v.trim(), '# github-test'))
   })
 })
