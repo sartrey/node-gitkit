@@ -26,18 +26,6 @@ describe('reset test env', function () {
     return assist.safeExecute(`rm -rf ${TEST_WORK} && mkdir -p ${TEST_WORK}`)
   })
 
-  it('init git env', function () {
-    return assist.safeExecute(
-      [
-        'git config --local user.name "sartrey"',
-        'git config --local user.email "sartrey@163.com"',
-        'git config --local user.name',
-        'git config --local user.email'
-      ].join(' && '),
-      { cwd: TEST_WORK, ignore: true }
-    )
-  })
-
   it('fix ssh key acl', function () {
     return assist.safeExecute(`chmod 400 ${TEST_SSHK}`)
   })
@@ -136,7 +124,9 @@ describe('simple: local', function () {
 
   it('make commit', function () {
     fs.writeFileSync(path.join(TEST_WORK, 'test'), '')
-    return gitkit.makeCommit(TEST_WORK, 'new commit')
+    return gitkit.makeCommit(TEST_WORK, 'new commit', {
+      email: 'sartrey@163.com', name: 'sartrey'
+    })
   })
 })
 
