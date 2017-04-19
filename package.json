@@ -1,6 +1,6 @@
 {
   "name": "node-gitkit",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "simple git kits",
   "main": "index.js",
   "scripts": {
@@ -22,8 +22,8 @@
   "homepage": "https://github.com/sartrey/node-gitkit#readme",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^3.9.1",
+    "eslint": "^3.19.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.1.2"
+    "mocha": "^3.2.0"
   }
 }

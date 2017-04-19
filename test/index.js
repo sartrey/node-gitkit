@@ -1,6 +1,7 @@
 'use strict'
 
 const assert = require('assert')
+const fs = require('fs')
 const path = require('path')
 
 const assist = require('../lib/assist.js')
@@ -23,6 +24,18 @@ describe('reset test env', function () {
 
   it('reset fixture', function () {
     return assist.safeExecute(`rm -rf ${TEST_WORK} && mkdir -p ${TEST_WORK}`)
+  })
+
+  it('init git env', function () {
+    return assist.safeExecute(
+      [
+        'git config --local user.name "sartrey"',
+        'git config --local user.email "sartrey@163.com"',
+        'git config --local user.name',
+        'git config --local user.email'
+      ].join(' && '),
+      { cwd: TEST_WORK, ignore: true }
+    )
   })
 
   it('fix ssh key acl', function () {
@@ -88,7 +101,7 @@ describe('simple: local', function () {
 
   it('get local hash: HEAD', function () {
     return gitkit.getLocalHash(TEST_WORK, 'HEAD')
-    .then(v => assert.equal(v, '602061db167b5ea0631398f513cfaa3d64ba308e'))
+    .then(v => assert.equal(v, '515141464989b77a4cc12d4f51bf096308633d94'))
   })
 
   it('get blob table, i4 + i3', function () {
@@ -116,6 +129,15 @@ describe('simple: local', function () {
     return gitkit.getBlobContent(TEST_WORK, 'b54b2e555c82b31c4b', 'utf8')
     .then(v => assert.equal(v.trim(), '# github-test'))
   })
+
+  it('reset repository', function () {
+    return gitkit.resetRepo(TEST_WORK, 'HEAD~1')
+  })
+
+  it('make commit', function () {
+    fs.writeFileSync(path.join(TEST_WORK, 'test'), '')
+    return gitkit.makeCommit(TEST_WORK, 'new commit')
+  })
 })
 
 describe('script', function () {
@@ -135,7 +157,11 @@ describe('script', function () {
       assert.deepEqual(v, {
         'README.md': {
           blob: 'b54b2e555c82b31c4bd7436f525fa3fdbdc98fef',
-          zero: ['602061d', 0]
+          zero: [ '602061d', 0 ]
+        },
+        'abc': {
+          blob: 'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391',
+          zero: [ '5151414', 2 ]
         }
       })
     })
