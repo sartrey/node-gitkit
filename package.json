@@ -1,6 +1,6 @@
 {
   "name": "node-gitkit",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "simple git kits",
   "main": "index.js",
   "scripts": {
